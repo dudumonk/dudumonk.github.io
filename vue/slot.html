@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="vue.js"></script>
+</head>
+<body>
+
+<div id="example" >
+	<example >
+		
+	</example>
+</div>
+
+
+<script type="text/javascript">
+Vue.component('example', {
+  template: '<button v-on:click="updateMessage">Click</button><span>{{msg}}</span>',
+  data: function () {
+    return {
+      msg: 'not updated'
+    }
+  },
+  methods: {
+    updateMessage: function () {
+      this.msg = 'updated'
+      console.log(this.$el.textContent) // => 'not updated'
+      this.$nextTick(function () {
+        console.log(this.$el.textContent) // => 'updated'
+      })
+    }
+  }
+})
+
+var vm = new Vue({
+	el : '#example'
+})
+</script>
+</body>
+</html>

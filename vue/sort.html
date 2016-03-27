@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<table id="demo" style="border: 1px solid gray;">
+	<thead>
+		<tr>
+			<th><a href="#" >Name</a></th>
+			<th><a href="#" >Age</a></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr v-for="p in people">
+			<td>{{p.name}}</td>
+			<td>{{p.age}}</td>
+		</tr>
+	</tbody>
+</table>
+
+<script src="vue.js"></script>
+<script type="text/javascript">
+	new Vue({
+		el : '#demo',
+		data : {
+			sortKey : '',
+			people : [
+				{name : 'lih' , age : 12},
+				{name : 'slf' , age : 24},
+				{name : 'awo' , age : 43},
+				{name : 'pqo' , age : 56}
+			]
+		}
+	})
+</script>
+</body>
+</html>

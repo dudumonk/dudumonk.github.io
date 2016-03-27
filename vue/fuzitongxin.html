@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="vue.js"></script>
+</head>
+<body>
+<!-- 子组件模板 -->
+<template id="child-template">
+  <input v-model="msg">
+  <button v-on:click="notify">Dispatch Event</button>
+</template>
+
+<!-- 父组件模板 -->
+<div id="events-example">
+   <input v-model="messages">
+   <button v-on:click="notify1">Broadcast Event</button>
+  <p>Messages: {{ messages | json }}</p>
+  <child v-on:child-msg="handleIt"></child>
+</div>
+
+<script type="text/javascript">
+	// 注册子组件
+	// 将当前消息派发出去
+	Vue.component('child',{
+		template : '#child-template',
+		data : function(){
+			return {msg : 'hello'}
+		},
+		methods : {
+			notify : function () {
+				if(this.msg.trim()){
+					this.$dispatch('child-msg' , this.msg);
+					this.msg = '';
+				}
+			}
+		},
+		events : {
+			'parent-msg' : function(messages){
+				this.msg = messages;
+			}
+		}
+	})
+
+	// 启动父组件
+	// 将收到消息时将事件推入一个数组
+	var parent = new Vue({
+		el : '#events-example',
+		data : {
+			messages : []
+		},
+		methods : {
+			notify1 : function (){
+				this.$broadcast('parent-msg' , this.messages);
+				this.messages = [];
+			},
+			// 此方法是处理在父组件中用v-on:child-msg的写法
+			handleIt : function(msg){
+				this.messages.push(msg);
+			}
+		}
+		/*,
+		events : {
+			// 此处是父组件监控自定义事件名的写法
+			'child-msg' : function(msg){
+				this.messages.push(msg);
+			}
+		}*/
+	})
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="vue.js"></script>
+</head>
+<body>
+<div id="demo">
+	<span v-text="message | reverse 'before' 'end'"></span>
+	<div>
+		<input type='text' v-model="money | currencyDisplay">
+		<p>Model value : {{money}}</p>
+	</div>
+</div>
+
+<script type="text/javascript">
+	Vue.filter('reverse' , function(value , begin , end){
+		return begin + '_' + value.split('').reverse().join('') + '_' + end;
+	})
+
+	Vue.filter('currencyDisplay' , {
+		read : function(val){
+			return '$' + val.toFixed(2);
+		},
+		write : function(val , oldVle){
+			var number =+ val.replace(/[^\d.]/g , '')
+			return isNaN(number) ? 0 : parseFloat(number.toFixed(2))
+		}
+	})
+
+	var vm = new Vue({
+		el : '#demo',
+		data : {
+			message : 'abc',
+			money : 123.45
+		}
+	})
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div id="app">
+	<input type="text" v-model="name" @keyup.enter="addName"></input>
+	<ul>
+		<li v-for="name in names" v-text="name"></li>
+	</ul>
+	<pre>{{$data | json}}</pre>
+</div>
+
+<script src="vue.js"></script>
+<script type="text/javascript">
+	var vm = new Vue({
+		el : '#app',
+		data : {
+			name : '',
+			names : ['A' , 'B']
+		},
+		methods : {
+			addName : function (){
+				this.names.push(this.name);
+				this.name = '';
+			}
+		}
+	})
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div id="app">
+	<h1>{{msg}}</h1>
+	<input type="text" v-model="msg"></input>
+	<pre>
+		{{$data | json}}
+	</pre>
+</div>
+
+<script src="vue.js"></script>
+<script type="text/javascript">
+	new Vue({
+		el : '#app',
+		data : {
+			msg : 'Hello World!'
+		}
+	})
+</script>
+</body>
+</html>

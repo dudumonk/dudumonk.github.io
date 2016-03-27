@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<title>Store 模式</title>
+	<meta charset="utf-8">
+	<link rel="icon" href="../images/logo.png" type="image/x-icon">
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+	var store = {
+		state : {
+			message : 'Hello!'
+		},
+		actionA : function(){
+			this.state.message = 'action A triggered'
+		},
+		actionB : function(){
+			this.state.messgae = 'action B triggered'
+		}
+	}
+
+	var vmA = new Vue({
+		data : {
+			privateState : {},
+			sharedState : store.state
+		}
+	})
+
+	var vmB = new Vue({
+		data : {
+			privateState : {},
+			sharedState : store.state
+		}
+	})
+
+	console.log(vmA.sharedState);
+	console.log(vmB.sharedState);
+</script>
+</body>
+</html>

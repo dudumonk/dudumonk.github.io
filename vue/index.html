@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/0.12.16/vue.min.js"></script>
+</head>
+<body>
+<div id="demo" v-demo-directive="LightSlateGray : msg"></div>
+
+<script>
+    Vue.directive('demoDirective', {
+        bind: function () {
+            this.el.style.color = '#fff'
+            this.el.style.backgroundColor = this.arg
+            console.log(this.arg)
+        },
+        update: function (value) {
+            this.el.innerHTML =
+                    'name - '       + this.name + ' 不带前缀的指令名<br>' +
+                    'raw - '        + this.raw + ' 未被解析的原始表达式<br>' +
+                    'expression - ' + this.expression + ' 指令的表达式，不包括参数和过滤器<br>' +
+                    'argument - '   + this.arg + ' 指令的参数<br>' +
+                    'value - '      + value
+        }
+    });
+    var demo = new Vue({
+        el: '#demo',
+        data: {
+            msg: 'hello!'
+        }
+    })
+
+</script>
+</body>
+</html>

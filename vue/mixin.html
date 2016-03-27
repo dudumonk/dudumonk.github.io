@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<title>混合</title>
+	<meta charset="utf-8">
+	<link rel="icon" href="../images/logo.png" type="image/x-icon">
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+	var myMixin = {
+		created : function(){
+			this.hello()
+		},
+		methods : {
+			hello : function(){
+				console.log('hello from mixin')
+			}
+		}
+	}
+
+	var Component = Vue.extend({
+		mixins : [myMixin]
+	})
+
+	var comonent = new Component();
+
+	var mixin = {
+		created : function(){
+			console.log('mixin hook called')
+		}
+	}
+
+	new Vue({
+		mixins : [mixin],
+		created : function(){
+			console.log('Component hook called')
+		}
+	})
+</script>
+</body>
+</html>

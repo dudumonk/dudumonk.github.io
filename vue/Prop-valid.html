@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html >
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="vue.js"></script>
+</head>
+<body>
+<div id="example">
+	<my-component></my-component>
+</div>
+<script type="text/javascript">
+
+	Vue.component("my-component" , {
+		props : {
+			// 基础类型检测（null 意思是任何类型都可以）
+			propA : Number,
+			// 必需且是字符串
+			propB : {
+				type : String,
+				required : true
+			},
+			// 数字，有默认值
+			propC : {
+				type : Number,
+				default : 100
+			},
+			// 对象或数组的默认值应由一个函数返回
+			propD : {
+				type : Object,
+				default : function(){
+					return {msg : 'hello'}
+				}
+			},
+			// 指定这个prop为双向绑定
+			// 如果绑定类型不对将抛出一条警告
+			propE : {
+				twoWay : true
+			},
+			// 自定义验证函数
+			propF : {
+				validator : function(value){
+					return value > 10
+				}
+			},
+			// 转换函数
+			// 在设置值之前转换值
+			propG : {
+				coerce : function(val){
+					return JSON.parse(val)
+				}
+			}
+		}
+	});
+
+	new Vue({
+		el : '#example'
+	})
+</script>
+</body>
+</html>

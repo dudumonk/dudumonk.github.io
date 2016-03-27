@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html >
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="vue.js"></script>
+</head>
+<body>
+<div id="example">
+	<my-component></my-component>
+
+	<table style="border:1px solid green;">
+		<tr is="my-dd">
+			<my-dd></my-dd>
+		</tr>
+	</table>
+</div>
+<script type="text/javascript">
+	var MyComponent = Vue.extend({
+		props : ["myMsg"],
+		template : '<div>A custom component!{{myMsg * 100}}</div>' + 
+					'<input type="text" v-model="myMsg">'
+	});
+
+	var Parent = Vue.extend({
+		data : function(){
+			return {
+				a : 'Hello World!',
+				b : 1}
+		},
+		template : '<div style="background-color:red;">It is Parent!{{a}}{{b}}</div><my-comp :my-msg.sync="b"></my-comp>',
+		components : {
+			'my-comp' : MyComponent
+		}
+	});
+
+	var DD = Vue.extend({
+		template : '<DD>变成绿色，我就是渲染成功！</DD>'
+	});
+
+	Vue.component("my-component" , Parent);
+	Vue.component("my-dd" , DD);
+
+	new Vue({
+		el : '#example'
+	})
+</script>
+</body>
+</html>
