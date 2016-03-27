@@ -37,43 +37,48 @@
         <span>曲线的印记</span>
     </a>
 </div>
-
-<div id="main">               
-    <div class="list">
-        <h2>
-			教程
-            <select class="version-select">
-                <option selected>1.0</option>
-                <option>0.12</option>
-            </select>
-        </h2>
-        <ul class="menu-root">            
-                <li>
-                    <a href="/guide/installation.html" class="sidebar-link">安装</a>
-                </li>
-            
-                <li>
-                    <a href="/guide/index.html" class="sidebar-link">起步</a>
-                </li>          
-        </ul>
-
-
-        </div>
-    <h1>混合</h1>
-    <h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p>混合以一种灵活的方式为组件提供分布复用功能。混合对象可以包含任意的组件选项。当组件使用了混合对象时，混合对象的所有选项将被“混入”组件自己的选项中。</p>
-<p>示例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 定义一个混合对象</span></span><br><span class="line"><span class="keyword">var</span> myMixin = &#123;</span><br><span class="line">  created: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.hello()</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    hello: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'hello from mixin!'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个组件，使用这个混合对象</span></span><br><span class="line"><span class="keyword">var</span> Component = Vue.extend(&#123;</span><br><span class="line">  mixins: [myMixin]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> Component() <span class="comment">// -&gt; "hello from mixin!"</span></span><br></pre></td></tr></table></figure>
-</div>
-    </div>
-
-
+<div id="main" class="">                
+    <div class="sidebar">
+        <div class="list">  
+            <h2>教程</h2>
+            <ul class="menu-root">
+                    <li>
+                        <a href="/guide/installation.html" class="sidebar-link">安装</a>
+                    </li>
+                    <li>
+                        <a href="/guide/mixins.html" class="sidebar-link current">混合</a>
+                    <ul class="menu-sub"><li><a class="section-link active" data-scroll="" href="#基础">基础</a></li><li><a class="section-link" data-scroll="" href="#选项合并">选项合并</a></li><li><a class="section-link" data-scroll="" href="#全局混合">全局混合</a></li><li><a class="section-link" data-scroll="" href="#自定义选项合并策略">自定义选项合并策略</a></li></ul></li>
                 
-            </div>
-            <script src="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
-            <script src="/js/smooth-scroll.min.js"></script>
-            <script src="/js/common.js"></script>
-        
+                    <li>
+                        <a href="/guide/plugins.html" class="sidebar-link">插件</a>
+                    </li>
+                
+                    <li>
+                        <a href="/guide/application.html" class="sidebar-link">构建大型应用</a>
+                    </li>
+                
+                    <li>
+                        <a href="/guide/comparison.html" class="sidebar-link">对比其它框架</a>
+                    </li>
+                
+            </ul>
+        </div>
 
+        <h1>混合</h1>
+        <a href="#基础" data-scroll=""><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2></a><p>混合以一种灵活的方式为组件提供分布复用功能。混合对象可以包含任意的组件选项。当组件使用了混合对象时，混合对象的所有选项将被“混入”组件自己的选项中。</p>
+    <p>示例：</p>
+    <figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">// 定义一个混合对象</span></span><br><span class="line"><span class="keyword">var</span> myMixin = {</span><br><span class="line">  created: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</span><br><span class="line">    <span class="keyword">this</span>.hello()</span><br><span class="line">  },</span><br><span class="line">  methods: {</span><br><span class="line">    hello: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'hello from mixin!'</span>)</span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个组件，使用这个混合对象</span></span><br><span class="line"><span class="keyword">var</span> Component = Vue.extend({</span><br><span class="line">  mixins: [myMixin]</span><br><span class="line">})</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> Component() <span class="comment">// -&gt; "hello from mixin!"</span></span><br></pre></td></tr></tbody></table></figure>
+        
+        <div class="guide-links"> 
+          <span>← <a href="/guide/custom-filter.html">自定义过滤器</a></span>
+          <span style="float:right"><a href="/guide/plugins.html">插件</a> →</span>
+        </div>
+    </div>           
+</div>
+
+        <script src="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+        <script src="/js/smooth-scroll.min.js"></script>
+        <script src="/js/common.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
         <script>
             document.addEventListener('DOMContentLoaded', function() {
