@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div id="app">
+	{{$data | json}}
+</div>
+
+<script src="../js/vue.js"></script>
+<script type="text/javascript">
+
+
+	var vm = new Vue({
+		el : '#app',
+		data : {
+			users : [],
+			newUser : {
+				name : '',
+				email : '123@123.com'
+			}
+		},
+		computed : {
+			validation : function(){
+				return {
+					name : !!this.newUser.name.trim(),
+					email : this.newUser.email === '123@123.com'
+				}
+			},
+			isValid : function(){
+				var validation = this.validation
+				return Object.keys(validation).every(function(key){
+					return validation[key]
+				})
+			}
+		},
+		methods : {
+			add : function(){
+				if(this.isValid){
+					console.log('validation pass')
+				}else{
+					console.log('validation nopass')
+				}
+			}
+		}
+	})
+
+	vm.add();
+</script>
+</body>
+</html>
