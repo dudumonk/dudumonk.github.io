@@ -1,93 +1,11 @@
-
-
-<!DOCTYPE html>
-<html lang="zh-CN">
-    <head>
-        <title>曲线印记</title>
-        <meta charset="utf-8">
-        <meta name="description" content="Vue.js - Intuitive, Fast and Composable MVVM for building interactive interfaces.">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-        <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Roboto Mono' rel='stylesheet' type='text/css'>
-        <link href='//fonts.googleapis.com/css?family=Dosis:300,500&text=Vue.js' rel='stylesheet' type='text/css'>
-        <link href="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" rel='stylesheet' type='text/css'>
-        <link rel="icon" href="/images/logo.png" type="image/x-icon">
-        <script>
-            window.PAGE_TYPE = "guide"
-        </script>
-        <link rel="stylesheet" href="/css/page.css">
-        <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-46852172-1', 'vuejs.org');
-  ga('send', 'pageview');
-</script>
-    <script src="/js/vue.js"></script>
+<!-- index.html -->
+<html>
+<head>
+    <meta charset="utf-8">
 </head>
 <body>
-<div id="mobile-bar">
-    <a class="menu-button"></a>
-    <a class="logo" href="/"></a>
-</div>     
-<div id="header">
-    <a id="logo" href="/">
-        <img src="/images/logo.png">
-        <span>曲线的印记</span>
-    </a>
-</div>
-<div id="main" class="">                
-    <div class="sidebar">
-        <div class="list">  
-            <h2>我的印记</h2>
-            <ul class="menu-root">
-                    <li>
-                        <a href="/guide/installation.html" class="sidebar-link">其它</a>
-                    </li>
-                    <li>
-                        <a href="#" class="sidebar-link current">路由</a>
-                    <ul class="menu-sub"><li><a class="section-link active" data-scroll="" href="/vue/router/route-simple-exmaple.html">一个简单的列子</a></li><li><a class="section-link" data-scroll="" href="/vue/router/subRoute.html">嵌套路由例子</a></li><li><a class="section-link" data-scroll="" href="#全局混合">全局混合</a></li><li><a class="section-link" data-scroll="" href="#自定义选项合并策略">自定义选项合并策略</a></li></ul></li>
-                
-                    <li>
-                        <a href="#" class="sidebar-link">Webpack</a>
-                        <ul class="menu-sub">
-                            <li><a class="section-link" data-scroll="" href="http://guowenfh.github.io/2016/03/24/vue-webpack-01-base/">webpack入坑之旅（一）不是开始的开始</a></li>
-                        </ul>
-                    </li>
-                
-                    <li>
-                        <a href="/guide/application.html" class="sidebar-link">构建大型应用</a>
-                    </li>
-                
-                    <li>
-                        <a href="/guide/comparison.html" class="sidebar-link">对比其它框架</a>
-                    </li>
-                
-            </ul>
-        </div>
-    </div>
-    <div class="content guide with-sidebar">
-        <h1>混合</h1>
-        <a href="#基础" data-scroll=""><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2></a><p>混合以一种灵活的方式为组件提供分布复用功能。混合对象可以包含任意的组件选项。当组件使用了混合对象时，混合对象的所有选项将被“混入”组件自己的选项中。</p>
-        <p>示例：</p>
-        <figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">// 定义一个混合对象</span></span><br><span class="line"><span class="keyword">var</span> myMixin = {</span><br><span class="line">  created: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</span><br><span class="line">    <span class="keyword">this</span>.hello()</span><br><span class="line">  },</span><br><span class="line">  methods: {</span><br><span class="line">    hello: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'hello from mixin!'</span>)</span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个组件，使用这个混合对象</span></span><br><span class="line"><span class="keyword">var</span> Component = Vue.extend({</span><br><span class="line">  mixins: [myMixin]</span><br><span class="line">})</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> Component() <span class="comment">// -&gt; "hello from mixin!"</span></span><br></pre></td></tr></tbody></table></figure>
-            
-        <div class="guide-links"> 
-          <span>← <a href="/guide/custom-filter.html">自定义过滤器</a></span>
-          <span style="float:right"><a href="/guide/plugins.html">插件</a> →</span>
-        </div> 
-    </div>         
-</div>
-
-        <script src="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
-        <script src="/js/smooth-scroll.min.js"></script>
-        <script src="/js/common.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                FastClick.attach(document.body);
-            }, false);
-        </script>
-    </body>
+    <h1 id="app"></h1>
+    <script src="bundle.js"></script>
+    <!-- 注意这里引入的不是我们创建的文件，而是用webpack生成的文件 -->
+</body>
 </html>
